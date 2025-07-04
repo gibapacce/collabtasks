@@ -9,7 +9,7 @@ Este projeto é um sistema web para gerenciamento de tarefas e projetos colabora
 - Vite
 - JavaScript
 - ESLint
-- (Opcional: Prettier)
+- React Router DOM
 
 ## Como rodar o projeto
 ```bash
@@ -22,7 +22,7 @@ npm run dev
 
 Acesse: http://localhost:5173
 
-## Estrutura de Pastas Sugerida
+## Estrutura de Pastas
 ```
 src/
   components/
@@ -30,20 +30,40 @@ src/
   context/
   hooks/
   services/
-  types/   # (opcional, pode ser omitido em JS)
   utils/
   styles/
 ```
 
-## Roadmap Resumido
+## Rotas já implementadas
+- `/login` — Página de login
+- `/register` — Página de registro
+- `/dashboard` — Dashboard principal
+- `/projects` — Lista de projetos
+- `/projects/:projectId` — Detalhes de um projeto
+- `/projects/:projectId/edit` — Editar projeto
+- `/projects/:projectId/tasks/:taskId` — Detalhes de uma tarefa
+- `/projects/:projectId/tasks/:taskId/edit` — Editar tarefa
+- `/notifications` — Notificações
+- `/profile` — Perfil do usuário
+- `/settings` — Configurações
+- `*` — Página não encontrada
+
+## Progresso
 - [x] Setup inicial com Vite + React
-- [ ] Estrutura de pastas
+- [x] Estrutura de pastas criada
+- [x] Rotas e páginas base implementadas
 - [ ] Autenticação (login/registro)
 - [ ] CRUD de tarefas e projetos
 - [ ] Colaboração entre usuários
 - [ ] Dashboard e notificações
 - [ ] Otimizações e testes
 
+## Próximos Passos
+- Implementar autenticação de usuário
+- Criar formulários de login e registro
+- Iniciar lógica de CRUD de projetos/tarefas
+- Adicionar contexto global para autenticação e tarefas
+
 ---
 
-Siga as instruções abaixo para criar a estrutura de pastas no projeto.
+Projeto em desenvolvimento 🚀
