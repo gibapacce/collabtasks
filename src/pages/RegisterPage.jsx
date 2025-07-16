@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useAuth } from "../context";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { Link as RouterLink } from "react-router-dom";
+import { Link } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
+import { Box, TextField, Button, Typography, CircularProgress, Paper } from "@mui/material";
 
 export default function RegisterPage() {
     const { register } = useAuth();
@@ -31,7 +34,7 @@ export default function RegisterPage() {
         e.preventDefault();
         if (!validate()) return;
         setLoading(true);
-        setTimeout(() => { // Simula requisição
+        setTimeout(() => {
             const result = register(email, password);
             setLoading(false);
             if (!result) {
@@ -45,26 +48,35 @@ export default function RegisterPage() {
 
     return (
         <>
-            <form onSubmit={handleSubmit} style={{ maxWidth: 320, margin: "2rem auto", display: "flex", flexDirection: "column", gap: 12 }}>
-                <h1>Página de Registro</h1>
-                <input
-                    type="email"
-                    placeholder="E-mail"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    disabled={loading}
-                />
-                <input
-                    type="password"
-                    placeholder="Senha"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    disabled={loading}
-                />
-                <button type="submit" disabled={loading}>{loading ? "Registrando..." : "Registrar"}</button>
-            </form>
+            <Box component={Paper} elevation={3} sx={{ maxWidth: 360, mx: "auto", mt: 8, p: 4, display: "flex", flexDirection: "column", gap: 2 }}>
+                <Typography variant="h5" align="center" gutterBottom>Cadastro</Typography>
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                    <TextField
+                        label="E-mail"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        disabled={loading}
+                        fullWidth
+                    />
+                    <TextField
+                        label="Senha"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        disabled={loading}
+                        fullWidth
+                    />
+                    <Button type="submit" variant="contained" color="primary" disabled={loading} fullWidth sx={{ mt: 1 }}>
+                        {loading ? <CircularProgress size={24} color="inherit" /> : "Registrar"}
+                    </Button>
+                    <Link component={RouterLink} to="/login" underline="hover" sx={{ mt: 2, textAlign: "center" }}>
+                        Já tem uma conta? Faça o Login
+                    </Link>
+                </form>
+            </Box>
             <ToastContainer position="top-center" autoClose={2500} />
         </>
     );
